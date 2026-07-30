@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa das Histórias</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:
+    radial-gradient(circle at top,#222 0%,#111 35%,#050505 100%);
+    color:#ddd;
+    font-family:Georgia,serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:700px;
+    background:rgba(15,15,15,.9);
+    border:1px solid #444;
+    border-radius:12px;
+    padding:40px;
+    box-shadow:0 0 40px rgba(0,0,0,.8);
+    text-align:center;
+}
+
+h1{
+    font-size:42px;
+    color:#d8c08b;
+    margin-bottom:15px;
+    letter-spacing:3px;
+}
+
+.sub{
+    color:#888;
+    font-style:italic;
+    margin-bottom:30px;
+}
+
+input{
+    width:80%;
+    padding:14px;
+    background:#0c0c0c;
+    color:#ddd;
+    border:1px solid #555;
+    border-radius:6px;
+    font-size:18px;
+    text-align:center;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 30px;
+    background:#2b2b2b;
+    color:#ddd;
+    border:1px solid #777;
+    border-radius:6px;
+    cursor:pointer;
+    transition:.3s;
+    font-size:17px;
+}
+
+button:hover{
+    background:#444;
+    color:#fff;
+}
+
+#resultado{
+    margin-top:35px;
+    padding:20px;
+    min-height:90px;
+    border-top:1px solid #444;
+    font-size:20px;
+    color:#d8c08b;
+    opacity:0;
+    transition:.5s;
+    line-height:1.7;
+}
+
+.fade{
+    opacity:1 !important;
+}
+
+footer{
+    margin-top:40px;
+    color:#555;
+    font-size:13px;
+    letter-spacing:2px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Casa das Histórias</h1>
+
+<div class="sub">
+Há palavras que abrem portas.<br>
+Outras apenas revelam aquilo que sempre esteve escondido.
+</div>
+
+<input
+id="senha"
+type="password"
+placeholder="Digite uma palavra...">
+
+<br>
+
+<button onclick="verificar()">
+Revelar
+</button>
+
+<div id="resultado"></div>
+
+<footer>
+Nem todas as histórias desejam ser encontradas.
+</footer>
+
+</div>
+
+<script>
+
+const mensagens = {
+
+"Medo":
+"Fungi notionem metus exprimunt: foris innoxii, sed intus periculosi cum se defendunt.",
+
+"Tempo":
+"Mae amser yn werthfawr o ddechreuad bodau hyd at eu diwedd, gan lunio'r presennol.",
+
+"Morte":
+"Heriotzak beldurra pizten du jendearengan, nahiz eta hain zuzen horrek ematen dien garrantzia gauzei.",
+
+"Lealdade":
+"Sei hart wie Stahl, um die zu beschützen, die du liebst, und sei schnell wie ein blauer Blitz.",
+
+"Dominação":
+"A mestría non consiste simplemente en ter poder; trátase de controlar e guiar os demais cara á vitoria.",
+
+"Vida":
+"Aquò que connecta l'alma al còrs e forma la consciéncia.",
+
+"Esperança":
+"Ɔtweaseɛ a ɔkyerɛ owia kwan kɔ da foforo mu no de ɔpɛ a ɔwɔ sɛ ɔbɛsɔre bio no ba.",
+
+"Evolução":
+"Alam nuntun evolusi spiritual.",
+
+"Razão":
+"Emosi lan logika saling nyangkepin lan ngungkapang kepenuhan keberadaan ragane.",
+
+"Lanceloth":
+"Teomorfo",
+
+"Felipe":
+"David",
+
+"Livro":
+"Pandora",
+
+"Lógica":
+"Falta algo...ἀτελής",
+
+"Emoção":
+"aquilo que falta",
+
+"Amor":
+"não quer ser encontrado.",
+
+"Ódio":
+"Aqueles que procuram o ódio, não vão achar aquele que não quer ser encontrado",
+
+"David":
+"Hebraico",
+
+"Nikolas":
+"medo da perda",
+
+"Moroz":
+"Subjulga o tempo, moldando e decidindo seu destino",
+
+"Calem":
+"Alguem que a morte não o afeta, por ser o caronte que guia elas",
+
+"Iris":
+"Leal aqueles que ama",
+
+"Dominic":
+"Dominado pela vingança",
+
+"Zoe":
+"Aquele que liga a alma ao corpo, não deixando o corpo virar uma casca vazia",
+
+"Lumine":
+"Neos Theion",
+
+"Lilies":
+"Aceitar para evoluir",
+
+"Torkan":
+"Planōmenos",
+
+"Tubig":
+"Desmṓtēs",
+
+"Juliano":
+"Filho.. aquilo que e escondido se camufla como um camaleão",
+
+"Marquin":
+"Paterno",
+
+"Lara":
+"Palaiòs Theós",
+
+"Marcos":
+"Palaiòs Theós",
+
+"Marfim":
+"Palaiòs Theós",
+
+"Marleria":
+"perda do amor",
+
+};
+
+function verificar(){
+
+const senha=document.getElementById("senha").value.trim();
+const resultado=document.getElementById("resultado");
+
+resultado.classList.remove("fade");
+
+setTimeout(()=>{
+
+if(mensagens[senha]){
+resultado.innerHTML=mensagens[senha];
+}else{
+resultado.innerHTML="Nenhuma história respondeu a essa palavra.";
+}
+
+resultado.classList.add("fade");
+
+},150);
+
+}
+
+document.getElementById("senha").addEventListener("keydown",function(e){
+if(e.key==="Enter"){
+verificar();
+}
+});
+
+</script>
+
+</body>
+</html>
